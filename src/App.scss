@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@0;1&display=swap');
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Oswald';
+  font-weight: 400;
+  line-height: 44px;
+  font-size: 36px;
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: 'Comfortaa', cursive;
+  font-weight: 400;
+  line-height: 30px;
+  font-size: 16px;
+}
