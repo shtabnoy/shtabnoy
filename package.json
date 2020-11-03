@@ -7,9 +7,7 @@
     "test": "jest",
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "build:js": "webpack --config webpack.prod.js",
-    "build:html": "ts-node build.ts",
-    "build": "rm -rf build && npm run build:js && npm run build:html",
-    "start:server": "npm run build && node server.js"
+    "build": "rm -rf build && npm run build:js"
   },
   "author": "shtabnoy",
   "license": "ISC",
@@ -18,10 +16,10 @@
     "@emotion/styled": "^10.0.27",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "typescript": "^3.9.7",
-    "webpack-dev-server": "^3.11.0"
+    "typescript": "^3.9.7"
   },
   "devDependencies": {
+    "webpack-dev-server": "^3.11.0",
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
