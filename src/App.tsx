@@ -97,4 +97,6 @@ const App: React.FC<any> = () => {
   );
 };
 
+// TODO: add pre-commit npm run build husky hook
+
 export default App;
