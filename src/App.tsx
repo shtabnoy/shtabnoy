@@ -15,7 +15,7 @@ const App: React.FC<any> = () => {
     <Main>
       <div
         css={css`
-          background-color: #e0af27;
+          background-color: #ffac46;
           position: relative;
           grid-row: 1;
           grid-column: 1 / span 4;
@@ -31,6 +31,22 @@ const App: React.FC<any> = () => {
           `}
         >
           Developer
+          <ul
+            css={css`
+              padding: 0;
+              margin-top: 16px;
+            `}
+          >
+            <li>
+              <a href="https://blog.shtabnoy.com">Blog</a>
+            </li>
+            <li>
+              <a href="https://maze.shtabnoy.com">Maze game</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/denisshtabnoy/">LinkedIn</a>
+            </li>
+          </ul>
         </div>
       </div>
       <div
@@ -51,6 +67,24 @@ const App: React.FC<any> = () => {
           `}
         >
           Musician
+          <ul
+            css={css`
+              padding: 0;
+              margin-top: 16px;
+            `}
+          >
+            <li>
+              <a href="https://www.instagram.com/neon.drums/">Instagram</a>
+            </li>
+            <li>
+              <a href="https://soundcloud.com/neondrums">SoundCloud</a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/channel/UCHbZse_bQNdU2PuD1WmCirg">
+                YouTube
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
       <div
@@ -71,6 +105,22 @@ const App: React.FC<any> = () => {
           `}
         >
           Blockchain adept
+          <ul
+            css={css`
+              padding: 0;
+              margin-top: 16px;
+            `}
+          >
+            <li>
+              <a href="https://medium.com/@fractal_bit">Medium</a>
+            </li>
+            <li>
+              <a href="https://twitter.com/fractal_bit">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.publish0x.com/@fr4ctalbit">Publish0x</a>
+            </li>
+          </ul>
         </div>
       </div>
       <div
