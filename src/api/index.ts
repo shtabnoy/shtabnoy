@@ -34,3 +34,25 @@ export const useFetchSpotifyToken = () => {
     },
   });
 };
+
+const fetchArtist = async (id: string, token: string) => {
+  const response = await fetch(`https://api.spotify.com/v1/artists/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+
+  return response.json();
+};
+
+export const useFetchArtist = (id: string, token: string) => {
+  return useQuery({
+    queryKey: ['fetchArtist', id],
+    queryFn: () => fetchArtist(id, token),
+    enabled: !!token,
+  });
+};
