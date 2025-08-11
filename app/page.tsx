@@ -153,13 +153,12 @@ export default function Home() {
             <div className="flex flex-col items-center mt-8">
                 <button
                     onClick={() => {
-                        // Initiate PDF download
-                        // const link = document.createElement("a");
-                        // link.href = encodeURI("/Denis_Shtabnoy__33_by_33.pdf");
-                        // link.download = "Denis Shtabnoy | 33 by 33.pdf";
-                        // document.body.appendChild(link);
-                        // link.click();
-                        // document.body.removeChild(link);
+                        const link = document.createElement("a");
+                        link.href = encodeURI("/Denis_Shtabnoy__33_by_33.pdf");
+                        link.download = "Denis Shtabnoy | 33 by 33.pdf";
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
                         setShowRickroll(true);
                     }}
                     className="px-8 py-4 text-xl font-bold text-white border-2 border-dashed rounded-xl shadow-md transition-all duration-200 hover:scale-105 hover:shadow-lg animate-bounce"
