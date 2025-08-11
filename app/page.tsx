@@ -94,6 +94,39 @@ export default function Home() {
                     allowFullScreen
                     style={{ width: "100vw", height: "100vh", border: 0 }}
                 ></iframe>
+                <button
+                    onClick={() => {
+                        setShowRickroll(false);
+                        setTimeout(() => {
+                            const link = document.createElement("a");
+                            link.href = encodeURI(
+                                "/Denis_Shtabnoy__33_by_33.pdf"
+                            );
+                            link.download = "Denis Shtabnoy | 33 by 33.pdf";
+                            link.style.display = "none";
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                        }, 1000);
+                    }}
+                    style={{
+                        position: "absolute",
+                        top: 24,
+                        right: 24,
+                        zIndex: 10000,
+                        background: "rgba(255,255,255,0.9)",
+                        color: "#222",
+                        border: "none",
+                        borderRadius: 8,
+                        padding: "10px 18px",
+                        fontWeight: "bold",
+                        fontSize: 18,
+                        cursor: "pointer",
+                        boxShadow: "0 2px 8px #0002",
+                    }}
+                >
+                    Close & Download PDF
+                </button>
             </div>
         );
     }
@@ -140,12 +173,6 @@ export default function Home() {
             <div className="flex flex-col items-center mt-8">
                 <button
                     onClick={() => {
-                        const link = document.createElement("a");
-                        link.href = encodeURI("/Denis_Shtabnoy__33_by_33.pdf");
-                        link.download = "Denis Shtabnoy | 33 by 33.pdf";
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
                         setShowRickroll(true);
                     }}
                     className="px-8 py-4 text-xl font-bold text-white border-2 border-dashed rounded-xl shadow-md transition-all duration-200 hover:scale-105 hover:shadow-lg animate-bounce"
