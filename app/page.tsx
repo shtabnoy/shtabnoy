@@ -100,10 +100,7 @@ export default function Home() {
 
     return (
         <div className="min-h-screen bg-white flex flex-col items-center justify-center p-6 gap-8">
-            <h1
-                className="text-4xl sm:text-5xl font-extrabold text-center text-[#43e97b] drop-shadow-lg mb-2"
-                style={{ fontFamily: "Comic Sans MS, Comic Sans, cursive" }}
-            >
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-center text-[#43e97b] drop-shadow-lg mb-2">
                 <span className="text-red-500">33</span> things
                 <br />I have learned
                 <br />
@@ -124,12 +121,7 @@ export default function Home() {
                     />
                 </div>
                 <div className="flex flex-col items-center sm:items-start">
-                    <div
-                        className="text-lg font-semibold text-gray-700 text-center sm:text-left"
-                        style={{
-                            fontFamily: "Comic Sans MS, Comic Sans, cursive",
-                        }}
-                    >
+                    <div className="text-lg font-semibold text-gray-700 text-center sm:text-left">
                         <div>Denis Shtabnoy,</div>
                         <div>
                             your life coach and guru{" "}
@@ -138,12 +130,7 @@ export default function Home() {
                             </span>
                         </div>
                     </div>
-                    <p
-                        className="text-base text-gray-500 mt-2 text-center sm:text-left"
-                        style={{
-                            fontFamily: "Comic Sans MS, Comic Sans, cursive",
-                        }}
-                    >
+                    <p className="text-base text-gray-500 mt-2 text-center sm:text-left">
                         &quot;I have read at least 2.5 self-help books and
                         watched 100+ motivational TikToks, so you know you can
                         trust me.&quot;
@@ -167,16 +154,12 @@ export default function Home() {
                             "linear-gradient(90deg, #43e97b 0%, #38f9d7 100%)",
                         color: "#222",
                         borderColor: "#43e97b",
-                        fontFamily: "Comic Sans MS, Comic Sans, cursive",
                         textShadow: "1px 1px 0 #fff8, 0 2px 8px #43e97b88",
                     }}
                 >
                     Download PDF file here
                 </button>
-                <p
-                    className="text-xs text-gray-400 mt-2"
-                    style={{ fontFamily: "Comic Sans MS, Comic Sans, cursive" }}
-                >
+                <p className="text-xs text-gray-400 mt-2">
                     (Definitely not a virus. Probably.)
                 </p>
             </div>
