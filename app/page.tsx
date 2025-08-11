@@ -8,8 +8,16 @@ export default function Home() {
     const [index, setIndex] = useState(0);
     const [fade, setFade] = useState(true);
     const [showRickroll, setShowRickroll] = useState(false);
+    const [rickrollSrc, setRickrollSrc] = useState<string>("");
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
     const iframeRef = useRef<HTMLIFrameElement | null>(null);
+    // Helper to detect mobile
+    function isMobile() {
+        if (typeof window === "undefined") return false;
+        return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(
+            navigator.userAgent
+        );
+    }
 
     useEffect(() => {
         intervalRef.current = setInterval(() => {
@@ -69,7 +77,6 @@ export default function Home() {
             }, 500);
         }
     }, [showRickroll]);
-
     if (showRickroll) {
         return (
             <div
@@ -87,7 +94,7 @@ export default function Home() {
                     ref={iframeRef}
                     width="100%"
                     height="100%"
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&fs=1&mute=1"
+                    src={rickrollSrc}
                     title="YouTube video player"
                     allow="autoplay; encrypted-media"
                     allowFullScreen
@@ -110,7 +117,7 @@ export default function Home() {
                     }}
                     style={{
                         position: "absolute",
-                        top: 36,
+                        top: 48,
                         right: 24,
                         zIndex: 10000,
                         background: "rgba(255,255,255,0.9)",
@@ -172,6 +179,14 @@ export default function Home() {
             <div className="flex flex-col items-center mt-8">
                 <button
                     onClick={() => {
+                        // Set the correct src for mobile/desktop
+                        const base =
+                            "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&fs=1";
+                        if (isMobile()) {
+                            setRickrollSrc(base + "&mute=1");
+                        } else {
+                            setRickrollSrc(base + "&mute=0");
+                        }
                         setShowRickroll(true);
                     }}
                     className="px-8 py-4 text-xl font-bold text-white border-2 border-dashed rounded-xl shadow-md transition-all duration-200 hover:scale-105 hover:shadow-lg animate-bounce"
