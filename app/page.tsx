@@ -7,7 +7,9 @@ export default function Home() {
     const photoCount = 7;
     const [index, setIndex] = useState(0);
     const [fade, setFade] = useState(true);
+    const [showRickroll, setShowRickroll] = useState(false);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
+    const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
     useEffect(() => {
         intervalRef.current = setInterval(() => {
@@ -21,6 +23,80 @@ export default function Home() {
             if (intervalRef.current) clearInterval(intervalRef.current);
         };
     }, []);
+
+    useEffect(() => {
+        return () => {
+            const interval = intervalRef.current;
+            if (interval) clearInterval(interval);
+        };
+    }, [showRickroll]);
+
+    useEffect(() => {
+        if (showRickroll && iframeRef.current) {
+            const iframe = iframeRef.current;
+            setTimeout(() => {
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (
+                    (
+                        iframe as unknown as {
+                            webkitRequestFullscreen?: () => void;
+                        }
+                    ).webkitRequestFullscreen
+                ) {
+                    (
+                        iframe as unknown as {
+                            webkitRequestFullscreen: () => void;
+                        }
+                    ).webkitRequestFullscreen();
+                } else if (
+                    (iframe as unknown as { mozRequestFullScreen?: () => void })
+                        .mozRequestFullScreen
+                ) {
+                    (
+                        iframe as unknown as {
+                            mozRequestFullScreen: () => void;
+                        }
+                    ).mozRequestFullScreen();
+                } else if (
+                    (iframe as unknown as { msRequestFullscreen?: () => void })
+                        .msRequestFullscreen
+                ) {
+                    (
+                        iframe as unknown as { msRequestFullscreen: () => void }
+                    ).msRequestFullscreen();
+                }
+            }, 500);
+        }
+    }, [showRickroll]);
+
+    if (showRickroll) {
+        return (
+            <div
+                style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    width: "100vw",
+                    height: "100vh",
+                    zIndex: 9999,
+                    background: "#000",
+                }}
+            >
+                <iframe
+                    ref={iframeRef}
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&fs=1"
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                    style={{ width: "100vw", height: "100vh", border: 0 }}
+                ></iframe>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-white flex flex-col items-center justify-center p-6 gap-8">
@@ -75,8 +151,8 @@ export default function Home() {
                 </div>
             </div>
             <div className="flex flex-col items-center mt-8">
-                <a
-                    href="#"
+                <button
+                    onClick={() => setShowRickroll(true)}
                     className="px-8 py-4 text-xl font-bold text-white border-2 border-dashed rounded-xl shadow-md transition-all duration-200 hover:scale-105 hover:shadow-lg animate-bounce"
                     style={{
                         background:
@@ -88,7 +164,7 @@ export default function Home() {
                     }}
                 >
                     Download PDF file here
-                </a>
+                </button>
                 <p
                     className="text-xs text-gray-400 mt-2"
                     style={{ fontFamily: "Comic Sans MS, Comic Sans, cursive" }}
