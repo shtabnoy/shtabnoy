@@ -28,10 +28,10 @@ export default function Home() {
                 className="text-4xl sm:text-5xl font-extrabold text-center text-[#43e97b] drop-shadow-lg mb-2"
                 style={{ fontFamily: "Comic Sans MS, Comic Sans, cursive" }}
             >
-                33 things
+                <span className="text-red-500">33</span> things
                 <br />I have learned
                 <br />
-                by the age of 33
+                by the age of <span className="text-red-500">33</span>
             </h1>
             <div className="flex flex-col sm:flex-row items-center gap-6 w-full max-w-2xl justify-center">
                 <div className="w-42 h-42 flex-shrink-0 border-4 border-dashed border-[#43e97b] rounded-full shadow-lg bg-gray-100">
