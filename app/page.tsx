@@ -1,39 +1,67 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
+    const photoCount = 7;
+    const [index, setIndex] = useState(0);
+    const [fade, setFade] = useState(true);
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+    useEffect(() => {
+        intervalRef.current = setInterval(() => {
+            setFade(false);
+            setTimeout(() => {
+                setIndex((prev) => (prev + 1) % photoCount);
+                setFade(true);
+            }, 400); // fade out, then change, then fade in
+        }, 5000);
+        return () => {
+            if (intervalRef.current) clearInterval(intervalRef.current);
+        };
+    }, []);
+
     return (
         <div className="min-h-screen bg-white flex flex-col items-center justify-center p-6 gap-8">
             <h1
                 className="text-4xl sm:text-5xl font-extrabold text-center text-[#43e97b] drop-shadow-lg mb-2"
                 style={{ fontFamily: "Comic Sans MS, Comic Sans, cursive" }}
             >
-                33 things I have learned by the age of 33
+                33 things
+                <br />I have learned
+                <br />
+                by the age of 33
             </h1>
             <div className="flex flex-col sm:flex-row items-center gap-6 w-full max-w-2xl justify-center">
-                <Image
-                    src="https://randomuser.me/api/portraits/men/33.jpg"
-                    alt="Denis Shtabnoy, your life coach and guru"
-                    width={128}
-                    height={128}
-                    className="w-32 h-32 rounded-full border-4 border-dashed border-[#43e97b] shadow-lg object-cover bg-gray-100"
-                    style={{ filter: "grayscale(0.2) contrast(1.2)" }}
-                    priority
-                />
+                <div className="w-42 h-42 flex-shrink-0 border-4 border-dashed border-[#43e97b] rounded-full shadow-lg bg-gray-100">
+                    <Image
+                        src={`/photos/me${index}.JPG`}
+                        alt={`Denis Shtabnoy, your life coach and guru, photo ${index}`}
+                        width={160}
+                        height={160}
+                        className={`w-40 h-40 aspect-square rounded-full object-cover transition-opacity duration-400 ${
+                            fade ? "opacity-100" : "opacity-0"
+                        }`}
+                        style={{ filter: "grayscale(0.2) contrast(1.2)" }}
+                        priority
+                    />
+                </div>
                 <div className="flex flex-col items-center sm:items-start">
-                    <p
+                    <div
                         className="text-lg font-semibold text-gray-700 text-center sm:text-left"
                         style={{
                             fontFamily: "Comic Sans MS, Comic Sans, cursive",
                         }}
                     >
-                        Denis Shtabnoy,{" "}
-                        <span className="line-through">
-                            your life coach and guru
-                        </span>{" "}
-                        <span className="italic text-pink-500">
-                            (self-proclaimed)
-                        </span>
-                    </p>
+                        <div>Denis Shtabnoy,</div>
+                        <div>
+                            your life coach and guru{" "}
+                            <span className="italic text-pink-500">
+                                (self-proclaimed)
+                            </span>
+                        </div>
+                    </div>
                     <p
                         className="text-base text-gray-500 mt-2 text-center sm:text-left"
                         style={{
