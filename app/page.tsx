@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
-    const photoCount = 7;
+    const photoCount = 6;
     const [index, setIndex] = useState(0);
     const [fade, setFade] = useState(true);
     const [showRickroll, setShowRickroll] = useState(false);
@@ -87,9 +87,8 @@ export default function Home() {
                     ref={iframeRef}
                     width="100%"
                     height="100%"
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&fs=1"
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&fs=1&mute=1"
                     title="YouTube video player"
-                    frameBorder="0"
                     allow="autoplay; encrypted-media"
                     allowFullScreen
                     style={{ width: "100vw", height: "100vh", border: 0 }}
@@ -111,7 +110,7 @@ export default function Home() {
                     }}
                     style={{
                         position: "absolute",
-                        top: 24,
+                        top: 36,
                         right: 24,
                         zIndex: 10000,
                         background: "rgba(255,255,255,0.9)",
