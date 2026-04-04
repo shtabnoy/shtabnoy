@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Denis Shtabnoy
 
-## Getting Started
+**Senior Software Engineer** · Berlin, Germany · Building for the web since 2016
 
-First, run the development server:
+I build high-scale frontend systems and full-stack applications for products used by millions. Currently scaling e-commerce at [Kaufland e-commerce](https://www.kaufland.de/) across 8 European markets, owning checkout flows that process 50K+ daily transactions.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Previously shipped platforms at **Warner Bros. Discovery**, **Fyndiq**, and **Daniel Wellington**.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### What I work with
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Frontend** · React, Vue.js, Next.js, TypeScript, Redux, Vuex, Tailwind CSS  
+**Backend** · Node.js, Express, Fastify, REST APIs, GraphQL, PostgreSQL, Redis  
+**Testing** · Jest, Cypress, Playwright, Puppeteer, React Testing Library  
+**Infra & Tooling** · Docker, GitHub Actions, CI/CD, Webpack, Vite  
+**Observability** · Datadog, Sentry, Grafana, Optimizely (A/B testing)  
+**AI Tools** · GitHub Copilot, Cursor, Claude, n8n workflows
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+### What I'm building right now
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🔧 **[taskflow-api](https://github.com/shtabnoy/taskflow-api)** — Production-grade REST API with TypeScript, Express, PostgreSQL, Prisma, JWT auth, Redis caching. My deep-dive into backend architecture patterns.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🧠 **[leetcode-solutions](https://github.com/shtabnoy/leetcode-solutions)** — Algorithm solutions in TypeScript & Python with detailed complexity analysis and approach explanations.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### What I care about
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Writing clean, testable code that ships on time. Making checkout flows faster. Understanding the full stack, not just the layer I'm most comfortable in. Using AI tools to build better software, not just faster software.
+
+---
+
+### Connect
+
+[shtabnoy.com](https://www.shtabnoy.com) · [LinkedIn](https://linkedin.com/in/denisshtabnoy) · [denis.shtabnoy@gmail.com](mailto:denis.shtabnoy@gmail.com)
