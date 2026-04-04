@@ -40,8 +40,8 @@ const projects: Project[] = [
   {
     status: 'live',
     name: '33 by 33',
-    desc: '33 things to do before turning 33. A personal project tracking goals and milestones — built with Next.js, React Query, and the Spotify API.',
-    stack: ['Next.js', 'React Query', 'Spotify API', 'TypeScript'],
+    desc: '33 things to do before turning 33. A personal project tracking goals and milestones — built with Next.js and React Query.',
+    stack: ['Next.js', 'React Query', 'TypeScript'],
     href: '/33-by-33',
   },
 ];
