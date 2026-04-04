@@ -1,40 +1,37 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Space_Mono, Outfit } from 'next/font/google';
+import QueryProvider from '@/providers/QueryProvider';
+import './globals.css';
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
+const spaceMono = Space_Mono({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-display',
 });
 
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
+const outfit = Outfit({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-body',
 });
 
 export const metadata: Metadata = {
-    title: "Denis Shtabnoy | 33 by 33",
-    description: "33 things I learned by the age of 33 by Denis Shtabnoy",
-    icons: {
-        icon: "/favicon.svg",
-    },
+  title: 'Denis Shtabnoy — Senior Software Engineer',
+  description:
+    'Senior Software Engineer building high-scale web applications. 10+ years of React, TypeScript, Vue.js, Node.js. Currently breaking things at Kaufland e-commerce.',
 };
 
 export default function RootLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
-    return (
-        <html lang="en">
-            <head>
-                <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-            </head>
-            <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-            >
-                {children}
-            </body>
-        </html>
-    );
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" className={`${spaceMono.variable} ${outfit.variable}`}>
+      <body className="font-body">
+        <QueryProvider>{children}</QueryProvider>
+      </body>
+    </html>
+  );
 }

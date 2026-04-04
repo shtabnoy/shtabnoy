@@ -1,9 +1,5 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
-const nextConfig: NextConfig = {
-    images: {
-        domains: ["randomuser.me"],
-    },
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;
