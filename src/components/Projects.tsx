@@ -70,6 +70,13 @@ const projects: Project[] = [
     href: '/challenges/promises',
   },
   {
+    topic: 'js-fundamentals',
+    name: 'Debounce from scratch',
+    desc: 'Type fast and watch the timeline. An interactive visualizer showing raw vs debounced function calls — closures, timers, and cleanup in 20 lines of code.',
+    stack: ['Closures', 'setTimeout', 'Generics', 'this binding'],
+    href: '/challenges/debounce',
+  },
+  {
     topic: 'personal',
     name: '33 by 33',
     desc: "33 things to do before turning 33. A personal project tracking goals and milestones — with a surprise twist you'll have to click to find out.",
