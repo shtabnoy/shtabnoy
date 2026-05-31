@@ -14,6 +14,7 @@ type Topic =
   | 'solid'
   | 'ai'
   | 'infra'
+  | 'react'
   | 'personal';
 
 interface Project {
@@ -59,6 +60,7 @@ const topicConfig: Record<Topic, { label: string; className: string }> = {
     className: 'bg-[#778ca3]/10 text-[#778ca3]',
   },
   personal: { label: 'Personal', className: 'bg-[#fd79a8]/10 text-[#fd79a8]' },
+  react: { label: 'React', className: 'bg-[#61dafb]/10 text-[#61dafb]' },
 };
 
 const projects: Project[] = [
@@ -68,6 +70,13 @@ const projects: Project[] = [
     desc: "What happens when you await in a loop vs running promises concurrently? An interactive visual race and deep-dive into one of JavaScript's most misunderstood patterns.",
     stack: ['Promises', 'Concurrency', 'Closures', 'Event Loop'],
     href: '/challenges/promises',
+  },
+  {
+    topic: 'react',
+    name: 'List virtualization from scratch',
+    desc: 'Rendering only a visible part of a very long list',
+    stack: ['React', 'Virtualization', 'rAF', 'transform: translateY'],
+    href: '/challenges/virtualization',
   },
   {
     topic: 'js-fundamentals',
