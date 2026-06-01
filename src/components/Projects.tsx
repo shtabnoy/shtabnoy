@@ -86,6 +86,13 @@ const projects: Project[] = [
     href: '/challenges/debounce',
   },
   {
+    topic: 'js-fundamentals',
+    name: 'Websockets price ticker',
+    desc: 'Simulate real-world websocket connection with crypto prices',
+    stack: ['WebSocket', 'setInterval', 'rAF', 'useRef'],
+    href: '/challenges/websockets',
+  },
+  {
     topic: 'personal',
     name: '33 by 33',
     desc: "33 things to do before turning 33. A personal project tracking goals and milestones — with a surprise twist you'll have to click to find out.",
