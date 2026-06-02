@@ -56,12 +56,22 @@ function TabsList({ children }: TabsListProps) {
     const tabs = Array.from(
       e.currentTarget.querySelectorAll<HTMLButtonElement>('[role="tab"]'),
     );
-    const index = tabs.indexOf(document.activeElement as HTMLButtonElement);
+    const currentIndex = tabs.indexOf(
+      document.activeElement as HTMLButtonElement,
+    );
+    if (currentIndex === -1) return;
 
-    if (e.key === 'ArrowRight') {
-      tabs[(index + 1) % tabs.length].focus();
-    } else if (e.key === 'ArrowLeft') {
-      tabs[(index - 1 + tabs.length) % tabs.length].focus();
+    let nextIndex: number | null = null;
+    if (e.key === 'ArrowRight') nextIndex = (currentIndex + 1) % tabs.length;
+    if (e.key === 'ArrowLeft')
+      nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+    if (e.key === 'Home') nextIndex = 0;
+    if (e.key === 'End') nextIndex = tabs.length - 1;
+
+    if (nextIndex !== null) {
+      e.preventDefault(); // prevent page scroll
+      tabs[nextIndex].focus();
+      tabs[nextIndex].click(); // trigger the existing onClick → setValue
     }
   }
 
@@ -91,7 +101,7 @@ function TabsTrigger({ children, value }: TabsTriggerProps) {
         backgroundColor: selectedTab === value ? 'blue' : 'transparent',
       }}
       value={value}
-      onClick={(e) => setValue(e.currentTarget.value)}
+      onClick={() => setValue(value)}
     >
       {children}
     </button>
