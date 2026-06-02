@@ -79,6 +79,13 @@ const projects: Project[] = [
     href: '/challenges/virtualization',
   },
   {
+    topic: 'react',
+    name: 'Compound component pattern',
+    desc: 'Create tabs component with trigger, panel and list attached to it',
+    stack: ['Compound', 'Tabs', 'react context', 'SOLID'],
+    href: '/challenges/compound-tab',
+  },
+  {
     topic: 'js-fundamentals',
     name: 'Debounce from scratch',
     desc: 'Type fast and watch the timeline. An interactive visualizer showing raw vs debounced function calls — closures, timers, and cleanup in 20 lines of code.',
