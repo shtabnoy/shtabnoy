@@ -86,6 +86,13 @@ const projects: Project[] = [
     href: '/challenges/compound-tab',
   },
   {
+    topic: 'react',
+    name: 'Autocomplete',
+    desc: 'Autocomplete component from scrtch',
+    stack: ['Autocomplete', 'useDebounce', 'ARIA', 'Keyboard navigation'],
+    href: '/challenges/autocomplete',
+  },
+  {
     topic: 'js-fundamentals',
     name: 'Debounce from scratch',
     desc: 'Type fast and watch the timeline. An interactive visualizer showing raw vs debounced function calls — closures, timers, and cleanup in 20 lines of code.',
