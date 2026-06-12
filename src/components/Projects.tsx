@@ -107,6 +107,13 @@ const projects: Project[] = [
     href: '/challenges/websockets',
   },
   {
+    topic: 'js-fundamentals',
+    name: 'HashMap from scratch',
+    desc: 'Building your own version of HashMap class',
+    stack: ['HashMap', 'collisions'],
+    href: '/challenges/hash-map',
+  },
+  {
     topic: 'personal',
     name: '33 by 33',
     desc: "33 things to do before turning 33. A personal project tracking goals and milestones — with a surprise twist you'll have to click to find out.",
