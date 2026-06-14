@@ -1,18 +1,20 @@
 export class HashMap<K extends string | number | boolean, V> {
   private _buckets: [key: K, value: V][][];
-  private _initialSize: number = 16;
+  private _bucketCount: number;
   private _size: number = 0;
 
-  constructor() {
-    this._buckets = Array.from({ length: this._initialSize }, () => []);
+  constructor(bucketCount: number = 16) {
+    this._bucketCount = bucketCount;
+    this._buckets = Array.from({ length: bucketCount }, () => []);
   }
 
-  private hash(key: K) {
-    let index = 0;
-    for (let c of key.toString()) {
-      index += c.charCodeAt(0);
+  hash(key: K): number {
+    let hash = 0;
+    const str = key.toString();
+    for (let i = 0; i < str.length; i++) {
+      hash = (hash * 31 + str.charCodeAt(i)) % this._bucketCount;
     }
-    return index % this._buckets.length;
+    return hash;
   }
 
   set(key: K, value: V) {
@@ -27,22 +29,21 @@ export class HashMap<K extends string | number | boolean, V> {
     }
   }
 
-  get(key: K) {
+  get(key: K): V | undefined {
     const bucketIndex = this.hash(key);
     const bucket = this._buckets[bucketIndex];
     if (bucket.length === 0) {
       return undefined;
     } else {
-      const value = bucket.find((el) => el[0] === key)?.[1];
-      return value;
+      return bucket.find((el) => el[0] === key)?.[1];
     }
   }
 
-  size(): number {
+  get size(): number {
     return this._size;
   }
 
-  delete(key: K) {
+  delete(key: K): boolean {
     const bucketIndex = this.hash(key);
     const bucket = this._buckets[bucketIndex];
 
@@ -57,39 +58,47 @@ export class HashMap<K extends string | number | boolean, V> {
     }
   }
 
-  has(key: K) {
+  has(key: K): boolean {
     const bucketIndex = this.hash(key);
-    const bucket = this._buckets[bucketIndex];
-    const index = bucket.findIndex((el) => el[0] === key);
-
-    if (index >= 0) {
-      return true;
-    }
-
-    return false;
+    return this._buckets[bucketIndex].some((el) => el[0] === key);
   }
 
-  keys() {
+  keys(): K[] {
     const keysArr: K[] = [];
-
-    const nonEmptyBuckets = this._buckets.filter((bucket) => bucket.length > 0);
-    nonEmptyBuckets.forEach((b) => {
-      b.forEach((el) => {
-        keysArr.push(el[0]);
-      });
+    this._buckets.forEach((bucket) => {
+      bucket.forEach((el) => keysArr.push(el[0]));
     });
     return keysArr;
   }
 
-  values() {
+  values(): V[] {
     const valuesArr: V[] = [];
-
-    const nonEmptyBuckets = this._buckets.filter((bucket) => bucket.length > 0);
-    nonEmptyBuckets.forEach((b) => {
-      b.forEach((el) => {
-        valuesArr.push(el[1]);
-      });
+    this._buckets.forEach((bucket) => {
+      bucket.forEach((el) => valuesArr.push(el[1]));
     });
     return valuesArr;
+  }
+
+  // ─── Visualization helpers ───
+
+  get buckets(): readonly [key: K, value: V][][] {
+    return this._buckets;
+  }
+
+  get bucketCount(): number {
+    return this._bucketCount;
+  }
+
+  get loadFactor(): number {
+    return this._size / this._bucketCount;
+  }
+
+  clone(): HashMap<K, V> {
+    const copy = new HashMap<K, V>(this._bucketCount);
+    copy._buckets = this._buckets.map((b) =>
+      b.map((entry) => [...entry] as [K, V]),
+    );
+    copy._size = this._size;
+    return copy;
   }
 }

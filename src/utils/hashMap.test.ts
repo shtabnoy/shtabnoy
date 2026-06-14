@@ -21,7 +21,7 @@ describe('hashMap', () => {
     hmap.set('eve', 13); // hashed to 0
     hmap.set('peter', 16); // hashed to 0
 
-    expect(hmap.size()).toEqual(4);
+    expect(hmap.size).toEqual(4);
   });
 
   it('deletes a key-value pair and returns true', () => {
@@ -30,9 +30,9 @@ describe('hashMap', () => {
     hmap.set('bob', 10);
     hmap.set('eve', 13);
 
-    expect(hmap.size()).toEqual(3);
+    expect(hmap.size).toEqual(3);
     expect(hmap.delete('alice')).toEqual(true);
-    expect(hmap.size()).toEqual(2);
+    expect(hmap.size).toEqual(2);
   });
 
   it("doesn't delete a key-value pair and returns false", () => {
@@ -49,7 +49,7 @@ describe('hashMap', () => {
     hmap.set('bob', 10);
     hmap.set('eve', 13);
 
-    expect(hmap.keys()).toEqual(['eve', 'bob', 'alice']);
+    expect(hmap.keys()).toEqual(['alice', 'eve', 'bob']);
   });
 
   it('returns values', () => {
@@ -58,7 +58,7 @@ describe('hashMap', () => {
     hmap.set('bob', 10);
     hmap.set('eve', 13);
 
-    expect(hmap.values()).toEqual([13, 10, 12]);
+    expect(hmap.values()).toEqual([12, 13, 10]);
   });
 
   it('return true if an element exists and false otherwise', () => {
