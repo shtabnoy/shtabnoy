@@ -1,27 +1,35 @@
-export class HashMap {
-  private buckets: [key: string, value: number][][];
-  private initialSize: number = 16;
+export class HashMap<K extends string | number | boolean, V> {
+  private _buckets: [key: K, value: V][][];
+  private _initialSize: number = 16;
+  private _size: number = 0;
 
   constructor() {
-    this.buckets = Array.from({ length: this.initialSize }, () => []);
+    this._buckets = Array.from({ length: this._initialSize }, () => []);
   }
 
-  private hash(key: string) {
+  private hash(key: K) {
     let index = 0;
-    for (let c of key) {
+    for (let c of key.toString()) {
       index += c.charCodeAt(0);
     }
-    return index % this.buckets.length;
+    return index % this._buckets.length;
   }
 
-  set(key: string, value: number) {
+  set(key: K, value: V) {
     const bucketIndex = this.hash(key);
-    this.buckets[bucketIndex].push([key, value]);
+    const bucket = this._buckets[bucketIndex];
+    const elementIndex = bucket.findIndex((el) => el[0] === key);
+    if (elementIndex >= 0) {
+      this._buckets[bucketIndex][elementIndex] = [key, value];
+    } else {
+      this._buckets[bucketIndex].push([key, value]);
+      this._size++;
+    }
   }
 
-  get(key: string) {
+  get(key: K) {
     const bucketIndex = this.hash(key);
-    const bucket = this.buckets[bucketIndex];
+    const bucket = this._buckets[bucketIndex];
     if (bucket.length === 0) {
       return undefined;
     } else {
@@ -31,29 +39,40 @@ export class HashMap {
   }
 
   size(): number {
-    return this.buckets.filter((bucket) => bucket.length > 0).length;
+    return this._size;
   }
 
-  delete(key: string) {
+  delete(key: K) {
     const bucketIndex = this.hash(key);
-    const bucket = this.buckets[bucketIndex];
+    const bucket = this._buckets[bucketIndex];
 
     if (bucket.length === 0) {
       return false;
-    } else if (bucket.length === 1) {
-      this.buckets[bucketIndex] = [];
-      return true;
     } else {
       const index = bucket.findIndex((el) => el[0] === key);
-      this.buckets[bucketIndex].splice(index, 1);
+      if (index === -1) return false;
+      this._buckets[bucketIndex].splice(index, 1);
+      this._size--;
       return true;
     }
   }
 
-  keys() {
-    const keysArr: string[] = [];
+  has(key: K) {
+    const bucketIndex = this.hash(key);
+    const bucket = this._buckets[bucketIndex];
+    const index = bucket.findIndex((el) => el[0] === key);
 
-    const nonEmptyBuckets = this.buckets.filter((bucket) => bucket.length > 0);
+    if (index >= 0) {
+      return true;
+    }
+
+    return false;
+  }
+
+  keys() {
+    const keysArr: K[] = [];
+
+    const nonEmptyBuckets = this._buckets.filter((bucket) => bucket.length > 0);
     nonEmptyBuckets.forEach((b) => {
       b.forEach((el) => {
         keysArr.push(el[0]);
@@ -63,9 +82,9 @@ export class HashMap {
   }
 
   values() {
-    const valuesArr: number[] = [];
+    const valuesArr: V[] = [];
 
-    const nonEmptyBuckets = this.buckets.filter((bucket) => bucket.length > 0);
+    const nonEmptyBuckets = this._buckets.filter((bucket) => bucket.length > 0);
     nonEmptyBuckets.forEach((b) => {
       b.forEach((el) => {
         valuesArr.push(el[1]);

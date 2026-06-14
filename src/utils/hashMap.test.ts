@@ -9,15 +9,19 @@ describe('hashMap', () => {
 
     expect(hmap.get('alice')).toEqual(12);
     expect(hmap.get('bob')).toEqual(10);
+
+    hmap.set('alice', 13);
+    expect(hmap.get('alice')).toEqual(13);
   });
 
-  it('returns the correct size of the map', () => {
+  it('returns the correct size of the map (including collisions)', () => {
     const hmap = new HashMap();
     hmap.set('alice', 12);
     hmap.set('bob', 10);
-    hmap.set('eve', 13);
+    hmap.set('eve', 13); // hashed to 0
+    hmap.set('peter', 16); // hashed to 0
 
-    expect(hmap.size()).toEqual(3);
+    expect(hmap.size()).toEqual(4);
   });
 
   it('deletes a key-value pair and returns true', () => {
@@ -26,7 +30,9 @@ describe('hashMap', () => {
     hmap.set('bob', 10);
     hmap.set('eve', 13);
 
+    expect(hmap.size()).toEqual(3);
     expect(hmap.delete('alice')).toEqual(true);
+    expect(hmap.size()).toEqual(2);
   });
 
   it("doesn't delete a key-value pair and returns false", () => {
@@ -43,7 +49,7 @@ describe('hashMap', () => {
     hmap.set('bob', 10);
     hmap.set('eve', 13);
 
-    expect(hmap.keys()).toEqual(['alice', 'bob', 'eve']);
+    expect(hmap.keys()).toEqual(['eve', 'bob', 'alice']);
   });
 
   it('returns values', () => {
@@ -52,6 +58,16 @@ describe('hashMap', () => {
     hmap.set('bob', 10);
     hmap.set('eve', 13);
 
-    expect(hmap.values()).toEqual([12, 10, 13]);
+    expect(hmap.values()).toEqual([13, 10, 12]);
+  });
+
+  it('return true if an element exists and false otherwise', () => {
+    const hmap = new HashMap();
+    hmap.set('alice', 12);
+    hmap.set('bob', 10);
+    hmap.set('eve', 13);
+
+    expect(hmap.has('alice')).toEqual(true);
+    expect(hmap.has('peter')).toEqual(false);
   });
 });
