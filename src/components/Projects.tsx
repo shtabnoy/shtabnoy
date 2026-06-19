@@ -120,6 +120,13 @@ const projects: Project[] = [
     stack: ['Next.js', 'React', 'TypeScript'],
     href: '/33-by-33',
   },
+  {
+    topic: 'algo-ds',
+    name: 'Linked List from scratch',
+    desc: "Nodes pointing to nodes. Step through a reversal one pointer at a time and finally understand why reassigning a variable doesn't change another.",
+    stack: ['Linked list', 'Pointers', 'Reversal', 'References'],
+    href: '/challenges/linked-list',
+  },
 ];
 
 export default function Projects() {

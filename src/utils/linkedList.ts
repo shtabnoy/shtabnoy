@@ -121,4 +121,13 @@ export class LinkedList<T> {
 
     this._head = prev;
   }
+
+  // ─── Visualization helpers ───
+
+  clone(): LinkedList<T> {
+    const copy = new LinkedList<T>();
+    const values = this.toArray();
+    values.forEach((v) => copy.append(v));
+    return copy;
+  }
 }
