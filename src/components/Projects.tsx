@@ -127,6 +127,13 @@ const projects: Project[] = [
     stack: ['Linked list', 'Pointers', 'Reversal', 'References'],
     href: '/challenges/linked-list',
   },
+  {
+    topic: 'browser',
+    name: 'C → WebAssembly in the browser',
+    desc: 'Write functions in C, compile them to WASM, and race them against JavaScript. Same algorithms, same browser, dramatically different performance.',
+    stack: ['WebAssembly', 'C', 'Emscripten', 'Docker', 'Benchmarking'],
+    href: '/challenges/wasm',
+  },
 ];
 
 export default function Projects() {
